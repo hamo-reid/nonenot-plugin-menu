@@ -10,8 +10,11 @@ from nonebot.params import CommandArg
 from .img_tool import img2bytes
 from .manager import MenuManager
 from .metadata import __plugin_meta__ as __plugin_meta__
+from .config import Config
+from .rule import help_rule
 
 driver = get_driver()
+plugin_config = Config.parse_obj(driver.config)
 
 
 @driver.on_startup
@@ -22,7 +25,8 @@ async def _():
 
 menu_manager = MenuManager()
 
-menu = on_command("菜单", aliases={"功能", "帮助"}, priority=5)
+menu = on_command("菜单", aliases={"功能", "帮助", "help"},
+                  priority=plugin_config.help_priority, block=plugin_config.help_block, rule=help_rule)
 
 
 @menu.handle()

@@ -8,5 +8,4 @@ class Config(BaseModel, extra=Extra.ignore):
     help_priority: Optional[int] = 1
     help_ignore_plugins: Optional[list] = []
     help_to_me: Optional[bool] = False
-    help_at_sender: Optional[bool] = True
-    help_specific_bot: Optional[list] = []
+    help_specific_bots: Optional[list] = []
