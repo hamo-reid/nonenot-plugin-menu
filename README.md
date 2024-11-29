@@ -220,3 +220,31 @@ __plugin_meta__ = PluginMetadata(
 - detail_des
 
 富文本可支持的用法见源码nonebot_plugin_PicMenu.img_tool中multi_text方法
+
+## Bot可对本插件进行的配置
+
+参考[nonebot-plugin-help](https://github.com/XZhouQD/nonebot-plugin-help)项目增加了部分配置项
+用户可在.env 配置文件内通过下述配置项配置对应功能
+
+### 配置 PicMenu 插件优先级及阻塞
+
+```
+help_block = true
+help_priority = 100
+```
+
+### 配置 PicMenu 插件忽略列表与to_me规则
+
+```
+help_ignore_plugins=["nonebot_plugin_localstore", "nonebot_plugin_apscheduler"]
+help_to_me=true
+```
+
+### 配置 PicMenu 插件只被特定机器人响应
+
+默认为空列表，如果列表不为空，则只有列表内的机器人会响应本插件
+
+```
+help_specific_bots = []  # default
+help_specific_bots = ["60481729"]  # 只有该qq号的bot会响应
+```
