@@ -5,13 +5,16 @@ from typing import List, Tuple, Union
 
 import nonebot.plugin
 from fuzzywuzzy import fuzz, process
-from nonebot import logger
+from nonebot import logger, get_driver
 from nonebot.plugin import PluginMetadata
 from PIL import Image
 from pydantic import error_wrappers
 
 from .data_struct import PluginMenuData
 from .template import DefaultTemplate, PicTemplate
+from .config import Config
+
+plugin_config = Config.parse_obj(get_driver().config)
 
 
 def fuzzy_match_and_check(item: str, match_list: List[str]) -> Union[None, str]:
@@ -70,6 +73,8 @@ class DataManager(object):
             self.plugin_menu_data_list.append(menu_data)
 
         for plugin in nonebot.plugin.get_loaded_plugins():
+            if plugin.name in plugin_config.help_ignore_plugins:
+                continue
             json_path = Path(
                 Path.cwd() / "menu_config" / "menus" / f"{plugin.name}.json"
             )
