@@ -4,10 +4,8 @@ from typing import Union
 from nonebot import get_driver, on_command, on_fullmatch
 from nonebot.adapters.onebot.v11 import Message
 from nonebot.adapters.onebot.v11.message import MessageSegment
-from nonebot.adapters.onebot.v11.permission import GROUP_ADMIN
 from nonebot.matcher import Matcher
 from nonebot.params import CommandArg
-from nonebot.permission import SUPERUSER
 
 from .img_tool import img2bytes
 from .manager import MenuManager
@@ -23,28 +21,8 @@ async def _():
 
 
 menu_manager = MenuManager()
-menu_switch = True
 
-
-switch = on_fullmatch("开关菜单", permission=SUPERUSER | GROUP_ADMIN, priority=5)
-
-
-@switch.handle()
-async def _(matcher: Matcher):
-    global menu_switch
-    menu_switch = not menu_switch
-
-    if menu_switch:
-        await matcher.finish("菜单已开启")
-
-    await matcher.finish("菜单已关闭")
-
-
-async def menu_rule():
-    return menu_switch
-
-
-menu = on_command("菜单", aliases={"功能", "帮助"}, rule=menu_rule, priority=5)
+menu = on_command("菜单", aliases={"功能", "帮助"}, priority=5)
 
 
 @menu.handle()
