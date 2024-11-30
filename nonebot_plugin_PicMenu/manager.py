@@ -73,7 +73,7 @@ class DataManager(object):
             self.plugin_menu_data_list.append(menu_data)
 
         for plugin in nonebot.plugin.get_loaded_plugins():
-            if plugin.name in plugin_config.help_ignore_plugins:
+            if plugin.name in plugin_config.picmenu_ignore_plugins:
                 continue
             json_path = Path(
                 Path.cwd() / "menu_config" / "menus" / f"{plugin.name}.json"

@@ -6,12 +6,12 @@ from nonebot.adapters.onebot.v11 import Message
 from nonebot.adapters.onebot.v11.message import MessageSegment
 from nonebot.matcher import Matcher
 from nonebot.params import CommandArg
+from nonebot.rule import to_me
 
 from .img_tool import img2bytes
 from .manager import MenuManager
 from .metadata import __plugin_meta__ as __plugin_meta__
 from .config import Config
-from .rule import help_rule
 
 driver = get_driver()
 plugin_config = Config.parse_obj(driver.config)
@@ -26,7 +26,8 @@ async def _():
 menu_manager = MenuManager()
 
 menu = on_command("菜单", aliases={"功能", "帮助", "help"},
-                  priority=plugin_config.help_priority, block=plugin_config.help_block, rule=help_rule)
+                  priority=plugin_config.picmenu_priority, block=plugin_config.picmenu_block,
+                  rule=to_me() if plugin_config.picmenu_to_me else None)
 
 
 @menu.handle()

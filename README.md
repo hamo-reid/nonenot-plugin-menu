@@ -229,22 +229,13 @@ __plugin_meta__ = PluginMetadata(
 ### 配置 PicMenu 插件优先级及阻塞
 
 ```
-help_block = true
-help_priority = 100
+picmenu_block = true
+picmenu_priority = 100
 ```
 
 ### 配置 PicMenu 插件忽略列表与to_me规则
 
 ```
-help_ignore_plugins=["nonebot_plugin_localstore", "nonebot_plugin_apscheduler"]
-help_to_me=true
-```
-
-### 配置 PicMenu 插件只被特定机器人响应
-
-默认为空列表，如果列表不为空，则只有列表内的机器人会响应本插件
-
-```
-help_specific_bots = []  # default
-help_specific_bots = ["60481729"]  # 只有该qq号的bot会响应
+picmenu_ignore_plugins=["nonebot_plugin_localstore", "nonebot_plugin_apscheduler"]
+picmenu_to_me=true
 ```
