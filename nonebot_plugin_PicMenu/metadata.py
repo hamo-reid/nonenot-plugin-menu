@@ -23,13 +23,6 @@ __plugin_meta__ = PluginMetadata(
                 "查看命令详情：菜单 插件名/编号 命令/命令编号\n"
                 "插件名和命令均支持模糊查找",
             },
-            {
-                "func": "开关菜单",
-                "trigger_method": "命令：开关菜单",
-                "trigger_condition": "完全匹配[SUPERUSER,ADMIN]",
-                "brief_des": "控制菜单是否开启",
-                "detail_des": "控制菜单是否开启的命令\n" "超级用户及群管理组拥有权限",
-            },
         ],
         "menu_template": "default",
     },

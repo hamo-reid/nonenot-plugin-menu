@@ -122,16 +122,6 @@ __plugin_meta__ = PluginMetadata(
 2. 修改menu_config/config.json 中 "default"的值为任一字体的路径（不要有反斜杠）</br>字体格式为[PIL.ImageFont.truetype](https://pillow.readthedocs.io/en/stable/reference/ImageFont.html?highlight=truetype#PIL.ImageFont.truetype)所支持的字体
 3. 保存config.json后重启bot即可使用菜单
 
-### 菜单开关
-
-切换菜单开启或关闭，命令如下：
-
-```qq
-菜单开关
-```
-
-仅有`SUPERUSER`和`ADMIN`拥有权限
-
 > 以下示例均为默认模板 字体：等线 常规
 
 ### 获取所有已加载插件的菜单[一级菜单]
@@ -230,3 +220,22 @@ __plugin_meta__ = PluginMetadata(
 - detail_des
 
 富文本可支持的用法见源码nonebot_plugin_PicMenu.img_tool中multi_text方法
+
+## Bot可对本插件进行的配置
+
+参考[nonebot-plugin-help](https://github.com/XZhouQD/nonebot-plugin-help)项目增加了部分配置项
+用户可在.env 配置文件内通过下述配置项配置对应功能
+
+### 配置 PicMenu 插件优先级及阻塞
+
+```
+picmenu_block = true
+picmenu_priority = 100
+```
+
+### 配置 PicMenu 插件忽略列表与to_me规则
+
+```
+picmenu_ignore_plugins=["nonebot_plugin_localstore", "nonebot_plugin_apscheduler"]
+picmenu_to_me=true
+```
